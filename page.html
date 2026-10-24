@@ -162,6 +162,46 @@
       .mhp { padding: 12px; border-radius: 20px; } .mh-top { gap: 6px; }
     }
     @media (prefers-reduced-motion: reduce) { .mh-room .chr, .mh-pane.on { animation: none; } }
+    /* ═══ 미니홈 · 가게 홈페이지 스타일 (shop): 큰 대문 사진 · 따라다니는 메뉴 · 정보 타일 · 섹션 ═══ */
+    body.shop { scroll-behavior: smooth; }
+    body.shop .rev { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; } body.shop .rev.in { opacity: 1; transform: none; }
+    .sh-nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 84%, transparent); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); border-bottom: 1px solid var(--line); }
+    .sh-nav-in { max-width: 1080px; margin: 0 auto; padding: 9px 20px; display: flex; align-items: center; gap: 12px; }
+    .sh-brand { font-weight: 900; letter-spacing: -.02em; font-size: 15px; white-space: nowrap; max-width: 30%; overflow: hidden; text-overflow: ellipsis; }
+    .sh-links { display: flex; gap: 2px; overflow-x: auto; flex: 1; scrollbar-width: none; } .sh-links::-webkit-scrollbar { display: none; }
+    .sh-links a { padding: 7px 13px; border-radius: 99px; font-size: 13.5px; font-weight: 800; color: var(--tx); text-decoration: none; white-space: nowrap; opacity: .72; transition: all .15s; } .sh-links a:hover { opacity: 1; } .sh-links a.on { background: var(--acc); color: #fff; opacity: 1; }
+    body.sk-night .sh-links a.on, body.sk-night .sh-btn.p { color: #1a1205; }
+    .sh-ask { appearance: none; border: 0; background: var(--acc); color: #fff; padding: 9px 16px; border-radius: 99px; font: 900 13.5px 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap; } body.sk-night .sh-ask { color: #1a1205; }
+    .sh-hero { position: relative; min-height: min(80vh, 740px); display: flex; align-items: flex-end; color: #fff; background: #17122b center / cover no-repeat; overflow: hidden; }
+    .sh-hero::before { content: ''; position: absolute; inset: -40px; background: var(--hero, none) center / cover no-repeat; filter: blur(34px) saturate(1.25) brightness(.62); transform: scale(1.1); }
+    .sh-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.32) 0%, rgba(0,0,0,.12) 38%, rgba(0,0,0,.82) 100%); }
+    .sh-hero-in { position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; padding: 90px 24px 76px; width: 100%; display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: end; }
+    .sh-txt { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; min-width: 0; }
+    .sh-ph { justify-self: end; width: min(100%, 400px); aspect-ratio: 4 / 5; border-radius: 30px; overflow: hidden; box-shadow: 0 34px 80px rgba(0,0,0,.55); border: 3px solid rgba(255,255,255,.4); background: rgba(255,255,255,.1); display: grid; place-items: center; } .sh-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; } .sh-ph img.ch { object-fit: contain; padding: 22px; }
+    .sh-hero .back { position: absolute; z-index: 3; top: 14px; left: 14px; padding: 8px 14px; border-radius: 99px; font-size: 12.5px; font-weight: 800; color: #fff; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.4); text-decoration: none; backdrop-filter: blur(8px); }
+    .sh-chips { display: flex; gap: 8px; flex-wrap: wrap; } .sh-chips span { font-size: 12.5px; font-weight: 800; padding: 6px 13px; border-radius: 99px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.34); backdrop-filter: blur(6px); }
+    .sh-hero h1 { margin: 0; font-size: clamp(36px, 7vw, 76px); line-height: 1.04; font-weight: 900; letter-spacing: -.035em; text-shadow: 0 4px 34px rgba(0,0,0,.5); max-width: 900px; }
+    .sh-hero .sub { font-size: clamp(15px, 2.2vw, 20px); color: rgba(255,255,255,.88); max-width: 720px; line-height: 1.6; }
+    .sh-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .sh-btn { appearance: none; display: inline-block; border: 1px solid rgba(255,255,255,.4); background: rgba(255,255,255,.14); color: #fff; padding: 14px 24px; border-radius: 99px; font: 900 15.5px 'Noto Sans KR', sans-serif; cursor: pointer; text-decoration: none; backdrop-filter: blur(8px); transition: transform .15s; } .sh-btn:hover { transform: translateY(-2px); }
+    .sh-btn.p { background: var(--acc); border-color: var(--acc); color: #fff; box-shadow: 0 12px 30px color-mix(in srgb, var(--acc) 45%, transparent); }
+    .sh-info { max-width: 1080px; margin: -38px auto 0; position: relative; z-index: 3; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+    .sh-tile { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; box-shadow: 0 16px 34px rgba(0,0,0,.2); font-size: 14.5px; line-height: 1.5; } .sh-tile small { display: block; font: 800 11px 'Montserrat', sans-serif; letter-spacing: .08em; color: var(--acc); margin-bottom: 4px; text-transform: uppercase; } .sh-tile a { color: var(--acc); font-weight: 800; text-decoration: none; }
+    .sh-sec { max-width: 1080px; margin: 0 auto; padding: 68px 24px 0; scroll-margin-top: 64px; }
+    .sh-sec h2 { display: block; margin: 0 0 22px; font-size: clamp(26px, 3.8vw, 40px); font-weight: 900; letter-spacing: -.03em; line-height: 1.15; } .sh-sec h2::before { display: none; } .sh-sec h2::after { content: ''; display: block; width: 44px; height: 4px; border-radius: 2px; background: var(--acc); margin-top: 12px; }
+    .sh-about { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
+    body.shop .intro { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.9; }
+    body.shop .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    body.shop .item { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; border-radius: 20px; box-shadow: 0 10px 26px rgba(0,0,0,.12); transition: transform .2s; } body.shop .item:hover { transform: translateY(-3px); } body.shop .item .nm { font-size: 17px; } body.shop .item .pr { font-size: 17px; padding: 5px 13px; border-radius: 99px; background: color-mix(in srgb, var(--acc) 14%, transparent); }
+    body.shop .gal { columns: 3 220px; column-gap: 12px; } body.shop .gal img { margin-bottom: 12px; border-radius: 18px; transition: transform .25s; } body.shop .gal img:hover { transform: scale(1.02); }
+    body.shop .news { position: relative; padding-left: 26px; border-left: 3px solid color-mix(in srgb, var(--acc) 40%, transparent); gap: 16px; } body.shop .nw { border-left: 0; position: relative; padding: 16px 18px; } body.shop .nw::before { content: ''; position: absolute; left: -35px; top: 20px; width: 14px; height: 14px; border-radius: 50%; background: var(--acc); border: 3px solid var(--paper); }
+    body.shop .reviews { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; } body.shop .rv { margin: 0; padding: 20px; border-radius: 20px; } body.shop .rv::before { content: '★★★★★'; letter-spacing: 3px; font-size: 14px; color: #f5a623; margin-bottom: 8px; } body.shop .rv p { font-size: 15.5px; line-height: 1.75; }
+    body.shop .loc { padding: 22px; font-size: 16px; gap: 12px; }
+    .sh-foot { max-width: 1080px; margin: 80px auto 0; padding: 36px 24px calc(48px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; font-size: 13px; color: var(--mut); }
+    .sh-foot b { color: var(--tx); font-size: 17px; display: block; margin-bottom: 4px; } .sh-foot a { color: var(--acc); font-weight: 800; text-decoration: none; } .sh-legal { grid-column: 1 / -1; white-space: pre-wrap; font-size: 12px; line-height: 1.7; opacity: .85; border-top: 1px dashed var(--line); padding-top: 14px; }
+    .sh-vis { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    @media (max-width: 760px) { .sh-hero-in { grid-template-columns: 1fr; padding-top: 70px; gap: 22px; } .sh-ph { order: -1; justify-self: center; width: min(78%, 300px); } .sh-about { grid-template-columns: 1fr; } .sh-brand { display: none; } .sh-hero { min-height: 70vh; } .sh-hero-in { padding-bottom: 64px; } .sh-sec { padding-top: 52px; } .sh-foot { grid-template-columns: 1fr; } .sh-nav-in { padding: 8px 12px; } }
+    @media (prefers-reduced-motion: reduce) { .sh-hero::before { animation: none; } body.shop .rev { opacity: 1; transform: none; transition: none; } }
     [hidden] { display: none !important; }
   </style>
 </head>
@@ -216,7 +256,8 @@
   <script>
     const D = window.PAGE_DATA || {}, P = D.page || {};
     const HOME = D.mode !== 'links';
-    if (HOME) { const sk = ['sky', 'pink', 'mint', 'night'].includes(P.skin) ? P.skin : 'night'; document.body.classList.add('home', 'sk-' + sk); }
+    const LAYOUT = !HOME ? '' : (['shop', 'room'].includes(P.layout) ? P.layout : (D.kind === 'business' ? 'shop' : 'room'));
+    if (HOME) { const sk = ['sky', 'pink', 'mint', 'night'].includes(P.skin) ? P.skin : 'night'; document.body.classList.add('home', 'sk-' + sk, LAYOUT); }
     const $ = (id) => document.getElementById(id);
     const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const safe = (u) => /^(https?:\/\/|mailto:|tel:)/i.test(String(u || '')) ? String(u) : '#';
@@ -287,7 +328,7 @@
     if (sns.length) { $('sns').innerHTML = sns.join(''); $('secSns').hidden = false; }
     if (D.mode === 'links') $('askBtn').textContent = T('askLink');
     if (D.phone) { $('callBtn').href = 'tel:' + String(D.phone).replace(/[^\d+]/g, ''); $('callBtn').hidden = false; }
-    if (HOME) buildRoom();
+    if (HOME) { if (LAYOUT === 'shop') buildShop(); else buildRoom(); }
     document.querySelectorAll('.gal img').forEach((im) => im.addEventListener('click', () => { $('lbImg').src = im.src; $('lb').classList.add('on'); }));
     $('lb').addEventListener('click', () => $('lb').classList.remove('on'));
     const toast = (m) => { const t = $('toast'); t.textContent = m; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 2200); };
@@ -366,7 +407,7 @@
       $('gbSend').disabled = false;
     });
     /* ── 미니홈: 책 모양 틀 · 미니룸 · 탭 ── */
-    function buildRoom() {
+    function homeData() {
       const blocks = P.blocks || [], by = (t) => blocks.filter((b) => b && b.type === t);
       const flat = (arr, key) => [].concat.apply([], arr.map((b) => b[key] || []));
       const gallery = (P.gallery || []).concat(flat(by('gallery'), 'images')).filter(Boolean).slice(0, 24);
@@ -376,6 +417,54 @@
       const loc = by('location')[0] || {}, address = P.address || loc.address || '', hours = P.hours || loc.hours || '', mapUrl = P.mapUrl || loc.mapUrl || '';
       const products = by('product'), legal = by('legal').map((b) => b.text).filter(Boolean).join('\n\n');
       const homeBlocks = blocks.filter((b) => b && ['text', 'title', 'link', 'youtube', 'grid'].includes(b.type));
+      return { blocks, gallery, news, items, reviews, address, hours, mapUrl, products, legal, homeBlocks };
+    }
+    /* ── 미니홈 · 가게 홈페이지 스타일 ── */
+    function buildShop() {
+      const shopPh = P.phone || D.phone || '';
+      const { gallery, news, items, reviews, address, hours, mapUrl, products, legal, homeBlocks } = homeData();
+      const title = P.title || D.company || D.name, subName = [D.name !== title ? D.name : '', D.role].filter(Boolean).join(' · ');
+      const chips = [];
+      if (D.region && (D.region.sido || D.region.city)) chips.push('📍 ' + [D.region.sido, D.region.city].filter(Boolean).join(' '));
+      const li2 = { ko: 0, en: 1, de: 2 }[L[lang] ? lang : 'ko'];
+      if (D.industryText || D.industry) chips.push(D.industryText || (IND[D.industry] ? IND[D.industry][li2] : D.industry));
+      const intro = P.intro ? '<div class="intro">' + esc(P.intro) + '</div>' : '';
+      const textBlocks = homeBlocks.filter((b) => b.type === 'text'), otherBlocks = homeBlocks.filter((b) => b.type !== 'text');
+      const firstText = !intro && textBlocks.length ? '<div class="intro">' + esc(textBlocks[0].text) + '</div>' : '';
+      const restText = (!intro && textBlocks.length ? textBlocks.slice(1) : textBlocks).map(blockHtml).join('');
+      const sns = (D.socials || []).map((s) => '<a href="' + safe(s.url) + '" target="_blank" rel="noopener">' + esc(s.label || s.type) + '</a>').concat(D.website ? ['<a href="' + safe(D.website) + '" target="_blank" rel="noopener">🌐 Website</a>'] : []).join(' · ');
+      const secs = [];
+      const infoCard = (address || hours || mapUrl) ? '<div class="loc">' + (address ? '<div class="row"><span>📍</span><span>' + esc(address) + '</span></div>' : '') + (hours ? '<div class="row"><span>🕒</span><span>' + esc(hours) + '</span></div>' : '') + (/^https:\/\//.test(mapUrl) ? '<a class="map" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + T('map') + ' →</a>' : '') + '</div>' : '';
+      if (intro || firstText || restText || otherBlocks.length) secs.push(['about', T('introT'), '<div class="sh-about"><div>' + (intro || firstText) + restText + '</div><div>' + (otherBlocks.map(blockHtml).join('')) + '</div></div>']);
+      if (items.length || products.length) secs.push(['menu', T('tMenu'), (items.length ? '<div class="items">' + items.map((it) => '<div class="item"><div class="nm">' + esc(it.name) + (it.note ? '<small>' + esc(it.note) + '</small>' : '') + '</div><div class="pr">' + esc(it.price || '') + '</div></div>').join('') + '</div>' : '') + products.map(blockHtml).join('')]);
+      if (gallery.length) secs.push(['photo', T('gal'), '<div class="gal">' + gallery.map((u) => '<img src="' + esc(u) + '" alt="" loading="lazy">').join('') + '</div>']);
+      if (news.length) secs.push(['news', T('news'), '<div class="news">' + news.map((n) => '<div class="nw"><div class="d">' + esc(n.date || '') + '</div><b>' + esc(n.title || '') + '</b><p>' + esc(n.text || '') + '</p></div>').join('') + '</div>']);
+      if (reviews.length) secs.push(['rv', T('rv'), '<div class="reviews">' + reviews.map((r) => '<div class="rv"><div class="who">' + esc(r.name || '') + '</div><p>' + esc(r.text || '') + '</p></div>').join('') + '</div>']);
+      if (infoCard) secs.push(['loc', T('loc'), infoCard]);
+      secs.push(['gb', T('gb'), '<div class="gbform"><input id="gbName" maxlength="20" placeholder="' + T('gbName') + '"><textarea id="gbBody" rows="2" maxlength="300" placeholder="' + T('gbBody') + '"></textarea><button type="button" id="gbSend">' + T('gbSend') + '</button></div><div id="gbList"></div><div class="tree" id="tree" hidden style="margin-top:14px"><div class="tv" id="treeSvg"></div><div class="ti"><div class="th"><b id="treeH">1.0m</b><span id="treeStage"></span></div><small id="treeWater"></small><small id="treeMeta"></small><div class="tb"><button type="button" class="fw" id="fwBtn" hidden></button><a class="fw" id="forestLink" hidden></a></div></div></div>']);
+      const bg = D.front ? 'background-image:url(' + JSON.stringify(D.front).slice(1, -1).replace(/\(/g, '%28').replace(/\)/g, '%29') + ')' : (D.friend && /^#[0-9a-f]{3,8}$/i.test(D.friend.color || '') ? 'background-color:' + D.friend.color : '');
+      const frId = D.friend && D.friend.id;
+      const tiles = [];
+      if (address) tiles.push('<div class="sh-tile"><small>' + T('loc') + '</small>' + esc(address) + (/^https:\/\//.test(mapUrl) ? '<br><a href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + T('map') + ' →</a>' : '') + '</div>');
+      if (hours) tiles.push('<div class="sh-tile"><small>' + T('hours') + '</small>' + esc(hours) + '</div>');
+      tiles.push('<div class="sh-tile"><small>' + T('ask') + '</small>' + (shopPh ? '<a href="tel:' + esc(String(shopPh).replace(/[^\d+]/g, '')) + '">' + esc(shopPh) + '</a><br>' : '') + '<a href="#" data-ask="1">' + T('askLink') + ' →</a></div>');
+      $('room').innerHTML = '<nav class="sh-nav"><div class="sh-nav-in"><div class="sh-brand">' + esc(title) + '</div><div class="sh-links" id="shLinks">' + secs.map(([k, l]) => '<a href="#s-' + k + '" data-k="' + k + '">' + esc(l) + '</a>').join('') + '</div><button type="button" class="sh-ask" data-ask="1">' + T('ask') + '</button></div></nav>'
+        + '<header class="sh-hero" style="' + (D.front ? '--hero:url(' + encodeURI(D.front).replace(/[()'"]/g, (c) => '%' + c.charCodeAt(0).toString(16)) + ');' : (bg || '')) + '">' + (D.hasCard !== false ? '<a class="back" href="' + cardUrl + '">' + T('back') + '</a>' : '') + '<div class="sh-hero-in"><div class="sh-txt">' + (chips.length ? '<div class="sh-chips">' + chips.map((c) => '<span>' + esc(c) + '</span>').join('') + '</div>' : '') + '<h1>' + esc(title) + '</h1>' + (subName ? '<div class="sub">' + esc(subName) + '</div>' : '') + '<div class="sh-cta"><button type="button" class="sh-btn p" data-ask="1">' + T('ask') + '</button>' + (shopPh ? '<a class="sh-btn" href="tel:' + esc(String(shopPh).replace(/[^\d+]/g, '')) + '">' + T('call') + '</a>' : '') + (D.hasLinks ? '<a class="sh-btn" href="' + cardUrl + '/links">' + T('linksBtn') + '</a>' : '') + '</div></div>' + (D.front ? '<div class="sh-ph"><img src="' + esc(D.front) + '" alt=""></div>' : (frId ? '<div class="sh-ph"><img class="ch" src="/assets/stickers/' + esc(frId) + '.png" alt=""></div>' : '')) + '</div></header>'
+        + '<div class="sh-info rev">' + tiles.join('') + '</div>'
+        + secs.map(([k, l, body]) => '<section class="sh-sec rev" id="s-' + k + '"><h2>' + esc(l) + '</h2>' + body + '</section>').join('')
+        + '<footer class="sh-foot"><div><b>' + esc(title) + '</b>' + (sns ? '<div>' + sns + '</div>' : '') + '<div class="sh-vis" style="margin-top:6px">' + T('today') + ' <b id="todayN" style="display:inline;font-size:inherit;color:var(--acc)">–</b> · ' + T('total') + ' <b id="totalN" style="display:inline;font-size:inherit;color:var(--acc)">–</b></div></div><div>' + T('made') + ' · <a href="/maker">' + T('mine') + '</a></div>' + (legal ? '<div class="sh-legal"><b style="display:block;font-size:12.5px;margin-bottom:4px">' + T('legalT') + '</b>' + esc(legal) + '</div>' : '') + '</footer>';
+      document.querySelector('.wrap').remove();
+      document.querySelectorAll('[data-ask]').forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); $('ov').classList.add('on'); }));
+      // 스크롤 따라 메뉴 강조 + 나타나기
+      const links = [...document.querySelectorAll('#shLinks a')];
+      const rv = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); rv.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+      document.querySelectorAll('.rev').forEach((el) => rv.observe(el));
+      const spy = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting && en.target.id) links.forEach((a) => a.classList.toggle('on', a.dataset.k === en.target.id.slice(2))); }), { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+      document.querySelectorAll('.sh-sec').forEach((el) => spy.observe(el));
+      setTimeout(() => document.querySelectorAll('.rev').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); }), 60);
+    }
+    function buildRoom() {
+      const { gallery, news, items, reviews, address, hours, mapUrl, products, legal, homeBlocks } = homeData();
       const slugHash = Array.from(String(D.slug)).reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
       const DEF = ['bear-01', 'bear-04', 'cat-02', 'cat-05', 'bunny-01', 'bunny-03', 'pals-02', 'bear-07'];
       const chId = (D.friend && D.friend.id) || DEF[slugHash % DEF.length], chSrc = '/assets/stickers/' + chId + '.png';
