@@ -21,7 +21,7 @@
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <meta name="theme-color" content="#07050d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@600;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/tokens.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/supabase.js"></script>
@@ -257,6 +257,31 @@
     .comm > summary { cursor: pointer; padding: 12px 2px; font-weight: 900; font-size: 15px; list-style: none; color: rgba(255,255,255,.8); }
     .comm > summary::before { content: '+ '; } .comm[open] > summary::before { content: '− '; }
     .comm[open] { display: flex; flex-direction: column; gap: 16px; }
+    /* ── SETUPOD 관제 화면의 결: 남색 바탕 + 은은한 빛 번짐 + 유리 카드 + 굵은 숫자 + 부드러운 곡선 ── */
+    body { background-color: #060913; background-image: radial-gradient(circle at 10% 0%, rgba(56,189,248,.12) 0%, transparent 40%), radial-gradient(circle at 90% 10%, rgba(168,85,247,.14) 0%, transparent 45%), radial-gradient(circle at 50% 60%, rgba(16,185,129,.08) 0%, transparent 50%), linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px); background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px; background-attachment: fixed; }
+    body::before, body::after { content: ''; position: fixed; pointer-events: none; border-radius: 50%; filter: blur(100px); z-index: 0; }
+    body::before { top: -80px; left: 15%; width: 480px; height: 480px; background: rgba(56,189,248,.18); }
+    body::after { top: 25%; right: 4%; width: 520px; height: 520px; background: rgba(147,51,234,.18); }
+    header.bar, .wrap { position: relative; z-index: 2; }
+    header.bar { background: rgba(11,17,32,.75) !important; backdrop-filter: blur(24px) saturate(190%); -webkit-backdrop-filter: blur(24px) saturate(190%); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .chartbox, .leadbox, .todo, .comm, .linkbox, .prod, .bizkpi > div, .bigchart, .tcall, .mytree, .stat div, .promo, .story, .rn-box, .adminbar { background: rgba(15,23,42,.65) !important; backdrop-filter: blur(28px) saturate(200%); -webkit-backdrop-filter: blur(28px) saturate(200%); border: 1px solid rgba(255,255,255,.1) !important; box-shadow: 0 16px 36px rgba(0,0,0,.4), inset 0 1px 1px rgba(255,255,255,.2); border-radius: 18px; }
+    .tcall { border-color: rgba(255,217,120,.38) !important; box-shadow: 0 16px 36px rgba(0,0,0,.4), inset 0 1px 1px rgba(255,217,120,.3), 0 0 28px rgba(255,217,120,.08); }
+    .bizkpi b, .stat b, .td-main b, .lcnt, .bigchart .bc-v { font-family: 'JetBrains Mono', 'Montserrat', monospace !important; letter-spacing: -.02em; }
+    .bizkpi > div { cursor: pointer; text-align: left; padding: 14px 16px; transition: all .2s; position: relative; }
+    .bizkpi > div:hover { border-color: rgba(255,255,255,.22) !important; transform: translateY(-1px); }
+    .bizkpi > div.on { background: rgba(56,189,248,.12) !important; border-color: rgba(56,189,248,.45) !important; }
+    .bizkpi > div.hot.on { background: rgba(255,217,120,.12) !important; border-color: rgba(255,217,120,.5) !important; }
+    .bizkpi b { font-size: 30px; }
+    .bigchart { padding: 18px 20px 14px; display: flex; flex-direction: column; gap: 10px; }
+    .bigchart .bc-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .bigchart .bc-t { display: flex; align-items: baseline; gap: 10px; } .bigchart .bc-t b { font-size: 15px; font-weight: 900; } .bigchart .bc-v { font-size: 13px; color: rgba(255,255,255,.6); }
+    .bigchart svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .bigchart .gl { stroke: rgba(255,255,255,.07); stroke-width: 1; } .bigchart .ax { fill: rgba(255,255,255,.45); font: 600 10.5px 'JetBrains Mono', monospace; }
+    .bigchart .ln { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px var(--c)); }
+    .bigchart .pt { fill: #0b1120; stroke-width: 2.5; }
+    .bigchart .empty { text-align: center; color: rgba(255,255,255,.5); padding: 30px 0; font-size: 13px; }
+    .cc:has(#chViews), .cc:has(#chLeads) { display: none; }
+    .btn { background: linear-gradient(135deg, #ffe08a, #ffc24d) !important; box-shadow: 0 6px 20px rgba(255,194,77,.25); } .btn.ghost { background: rgba(255,255,255,.06) !important; box-shadow: none; border: 1px solid rgba(255,255,255,.14); color: #fff; }
     @media (max-width: 900px) {
       #vMine.biz { flex-direction: column !important; }
       .col-work { order: -1; flex: none; width: 100%; } .col-me { flex: none; width: 100%; position: static; }
@@ -445,12 +470,14 @@
       const me = document.createElement('div'); me.className = 'col-me';
       const work = document.createElement('div'); work.className = 'col-work';
       const kpi = document.createElement('div'); kpi.className = 'bizkpi'; kpi.id = 'bizKpi';
-      kpi.innerHTML = '<div><span data-k="tdToday">오늘 조회</span><b id="kToday">0</b><small id="kTodayD"></small></div><div><span data-k="week">이번 주 조회</span><b id="kWeek">0</b><small></small></div><div><span data-k="all">전체 조회</span><b id="kAll">0</b><small></small></div><div class="hot"><span data-k="leads">받은 연락처</span><b id="kLeads">0</b><small id="kNew"></small></div>';
+      kpi.innerHTML = '<div class="on" data-m="views" data-r="7"><span data-k="tdToday">오늘 조회</span><b id="kToday">0</b><small id="kTodayD"></small></div><div data-m="views" data-r="7"><span data-k="week">이번 주 조회</span><b id="kWeek">0</b><small></small></div><div data-m="views" data-r="30"><span data-k="all">전체 조회</span><b id="kAll">0</b><small></small></div><div class="hot" data-m="leads" data-r="30"><span data-k="leads">받은 연락처</span><b id="kLeads">0</b><small id="kNew"></small></div>';
       const comm = document.createElement('details'); comm.className = 'comm'; comm.id = 'comm'; comm.open = true;
       comm.innerHTML = '<summary data-k="commT">🌳 커뮤니티 · 내 나무 · 일촌</summary>';
       [q('#starStat'), q('#myTree'), q('#fwStat'), q('#fwList'), q('#storyRow'), q('#promoRow'), q('#starNote')].forEach((e) => { if (e) comm.appendChild(e); });
       const tc = document.createElement('div'); tc.className = 'tcall'; tc.id = 'todayCall'; tc.hidden = true;
-      [kpi, tc, q('#leadBox'), q('#chartBox'), q('.todo'), comm].forEach((e) => { if (e) work.appendChild(e); });
+      const bc = document.createElement('div'); bc.className = 'bigchart'; bc.id = 'bigChart'; bc.hidden = true;
+      bc.innerHTML = '<div class="bc-h"><div class="bc-t"><b id="bcTitle"></b><span class="bc-v" id="bcSum"></span></div><span class="rng"><button type="button" class="lchip on" data-rng="7">7일</button><button type="button" class="lchip" data-rng="30">30일</button></span></div><div id="bcSvg"></div>';
+      [kpi, bc, tc, q('#leadBox'), q('#chartBox'), q('.todo'), comm].forEach((e) => { if (e) work.appendChild(e); });
       [q('.stage-w'), q('#cardSwitch'), q('.who'), q('.linkbox'), q('.acts'), q('p.note[data-k="editNote"]'), q('#prods'), q('#gbBox'), q('.pane[data-pane="cards"] > div:not(.leadbox)')].forEach((e) => { if (e) me.appendChild(e); });
       v.appendChild(me); v.appendChild(work); v.classList.add('biz'); document.getElementById('app').classList.add('biz');
       const sync = () => { const g = (id) => (($(id) || {}).textContent || '').trim() || '0'; $('kToday').textContent = g('tdNum'); $('kWeek').textContent = g('sWeek'); $('kAll').textContent = g('sAll'); $('kLeads').textContent = g('leadCnt'); $('kTodayD').textContent = (($('tdDelta') || {}).textContent || '').trim(); const nb = $('tabLeadN'); $('kNew').textContent = nb && !nb.hidden && nb.textContent.trim() ? T('l_new') + ' ' + nb.textContent.trim() : ''; };
@@ -627,7 +654,8 @@
       if (btn) btn.disabled = false;
     }
     /* 성과 그래프: 서버 집계(tc_card_stats) → 손으로 그린 SVG (라이브러리 없음) */
-    let cRange = 7, cData = null;
+    let cRange = 7, cData = null, bcMetric = 'views';
+    document.addEventListener('click', (e) => { const t = e.target && e.target.closest && e.target.closest('.bizkpi > div[data-m]'); if (!t) return; bcMetric = t.dataset.m; cRange = Number(t.dataset.r) || 7; document.querySelectorAll('.bizkpi > div').forEach((x) => x.classList.toggle('on', x === t)); if (cData) renderCharts(); });
     const cmd = (s) => { const a = s.split('-'); return Number(a[1]) + '/' + Number(a[2]); };
     function barSvg(days, key, color) {
       const W = 340, H = 110, pad = 18, n = days.length, bw = (W - 8) / n, max = Math.max(1, ...days.map((x) => x[key]));
@@ -647,6 +675,30 @@
       return `<div class="donut"><svg viewBox="0 0 120 120" role="img">${segs}<text x="60" y="56" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">${pct}%</text><text x="60" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.55)">${lesc(String(top.name).slice(0, 10))}</text></svg><div class="dlg">${legend}</div></div>`;
     }
     function rowsHtml(list, color) { const mx = Math.max(1, ...list.map((x) => x.n)); return list.map((x) => `<div class="crow"><span class="nm">${lesc(x.name)}</span><span class="tr"><i style="width:${Math.max(4, Math.round(x.n / mx * 100))}%;background:${color}"></i></span><span class="v">${x.n}</span></div>`).join(''); }
+    /* 부드러운 곡선 차트 (SETUPOD 관제 화면처럼): 점들을 지나는 Catmull-Rom 곡선 + 아래 면 채우기 */
+    function drawBigChart() {
+      const box = $('bigChart'); if (!box) return;
+      if (!cData || !cData.days) { box.hidden = true; return; }
+      const days = cData.days.slice(-cRange), key = bcMetric, col = key === 'leads' ? '#ffd978' : '#38bdf8';
+      const vals = days.map((x) => Number(x[key] || 0)), sum = vals.reduce((a, b) => a + b, 0);
+      $('bcTitle').textContent = T(key === 'leads' ? 'cLeads' : 'cViews'); $('bcSum').textContent = T('cTotal').replace('{n}', sum);
+      document.querySelectorAll('.rng .lchip').forEach((b) => b.classList.toggle('on', Number(b.dataset.rng) === cRange));
+      box.hidden = false;   // 폭을 재려면 먼저 보이게
+      const W = Math.max(300, Math.min(820, Math.round($('bcSvg').clientWidth || 820))), H = W < 500 ? 220 : 250, L = 30, R = 10, Tp = 12, B = 26, iw = W - L - R, ih = H - Tp - B;
+      const mx = Math.max(4, Math.ceil(Math.max.apply(null, vals) * 1.15 / 4) * 4), n = days.length;
+      const X = (i) => L + (n > 1 ? iw * i / (n - 1) : iw / 2), Y = (v) => Tp + ih - ih * v / mx;
+      const P = vals.map((v, i) => [X(i), Y(v)]);
+      let path = 'M' + P[0][0].toFixed(1) + ' ' + P[0][1].toFixed(1);
+      for (let i = 0; i < P.length - 1; i++) { const p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2; const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6]; path += ' C' + c1.map((v) => v.toFixed(1)).join(' ') + ' ' + c2.map((v) => v.toFixed(1)).join(' ') + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1); }
+      const area = path + ' L' + P[P.length - 1][0].toFixed(1) + ' ' + (Tp + ih) + ' L' + P[0][0].toFixed(1) + ' ' + (Tp + ih) + ' Z';
+      let grid = '';
+      for (let g = 0; g <= 4; g++) { const v = mx * g / 4, y = Y(v); grid += '<line class="gl" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="ax" x="' + (L - 8) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end">' + Math.round(v) + '</text>'; }
+      const step = Math.max(1, Math.ceil(n / 7)); let xl = '';
+      days.forEach((x, i) => { if (i % step === 0 || i === n - 1) { const dt = String(x.d || ''); const m = dt.slice(5, 7).replace(/^0/, ''), dd = dt.slice(8, 10).replace(/^0/, ''); xl += '<text class="ax" x="' + X(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + m + '/' + dd + '</text>'; } });
+      const dots = n <= 14 ? P.map(([x, y], i) => '<circle class="pt" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="4" stroke="' + col + '"><title>' + (days[i].d || '') + ' · ' + vals[i] + '</title></circle>').join('') : '';
+      $('bcSvg').innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" style="--c:' + col + '"><defs><linearGradient id="bcg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + col + '" stop-opacity=".32"/><stop offset="1" stop-color="' + col + '" stop-opacity="0"/></linearGradient></defs>' + grid + xl + '<path d="' + area + '" fill="url(#bcg)"/><path class="ln" d="' + path + '" stroke="' + col + '"/>' + dots + '</svg>' + (sum ? '' : '<p class="empty">' + T(key === 'leads' ? 'cEmptyL' : 'cEmpty') + '</p>');
+      box.hidden = false;
+    }
     function renderCharts() {
       const box = $('chartBox'); if (!cData || !cData.days) { box.hidden = true; return; }
       const days = cData.days.slice(-cRange), sumV = days.reduce((a, x) => a + x.views, 0), sumL = days.reduce((a, x) => a + x.leads, 0);
@@ -661,7 +713,7 @@
       $('chFun').innerHTML = tot ? donutHtml(steps.filter((x) => x.n > 0), ['#a78bfa', '#7dd3fc', '#ffd978', '#4ade80']) : `<p class="empty">${T('cEmptyL')}</p>`;
       $('cvFun').textContent = tot ? T('cWon').replace('{p}', Math.round(Number(f.won || 0) / tot * 100)) : '';
       renderToday(); renderChLinks();
-      box.hidden = false;
+      box.hidden = false; drawBigChart();
     }
     /* 오늘 vs 어제: 숫자를 계속 확인하고 싶어지게 + 적으면 "어디에 더 보낼지" 안내 */
     function renderToday() {
@@ -685,7 +737,11 @@
     });
     async function loadCharts() {
       $('chartBox').hidden = true; cData = null;
-      if (demo || typeof getCardStats !== 'function' || !main) return;
+      if (demo) {   // 보기용 가짜 숫자 (데모 화면에서만)
+        const days = []; for (let i = 29; i >= 0; i--) { const dt = new Date(Date.now() - i * 864e5); days.push({ d: dt.toISOString().slice(0, 10), views: Math.round(18 + 14 * Math.sin(i / 3.1) + (i % 5) * 3), leads: Math.max(0, Math.round(2 + 2 * Math.sin(i / 2.3))) }); }
+        cData = { days, funnel: { new: 5, contacted: 3, talking: 2, won: 1 }, lead_channels: [{ name: 'kakao', n: 6 }, { name: 'instagram', n: 3 }], view_channels: [] }; renderCharts(); return;
+      }
+      if (typeof getCardStats !== 'function' || !main) return;
       try { cData = await getCardStats(main.slug, 30); } catch (e) {}
       renderCharts();
     }
