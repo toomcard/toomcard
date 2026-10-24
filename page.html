@@ -106,11 +106,68 @@
     .lb.on { display: flex; } .lb img { max-width: 96vw; max-height: 90vh; border-radius: 12px; }
     .toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); background: #ffd978; color: #1a1205; padding: 10px 18px; border-radius: 99px; font-weight: 800; font-size: 13.5px; opacity: 0; transition: .25s; pointer-events: none; z-index: 70; white-space: nowrap; }
     .toast.on { opacity: 1; transform: translateX(-50%); }
+    /* ═══ 미니홈 (싸이월드 감성): 책 모양 틀 · 탭 · 미니룸 · TODAY/TOTAL · 일촌 · 방명록 · 스킨 ═══ */
+    body.home { --paper: #fffdf8; --ink: #2a3350; --acc: #3b82f6; --acc2: #7cc4ff; --wall: linear-gradient(180deg, #bfe3ff 0%, #eaf6ff 100%); --rwall: #d9efff; --rfloor: #f0d8aa; --rside: #c4e2fb; --bg: #e9f5ff; --tx: #2a3350; --mut: rgba(42,51,80,.6); --card: rgba(42,51,80,.05); --line: rgba(42,51,80,.14); --gold: var(--acc); background: var(--wall) fixed; color: var(--tx); }
+    body.home.sk-pink { --paper: #fffafc; --ink: #4a2f3d; --acc: #ec4899; --acc2: #ffa8cf; --wall: linear-gradient(180deg, #ffd5e5 0%, #fff1f6 100%); --rwall: #ffe0ec; --rfloor: #f5d3b0; --rside: #ffd0e3; --bg: #fff1f6; --tx: #4a2f3d; --mut: rgba(74,47,61,.6); --card: rgba(74,47,61,.05); --line: rgba(74,47,61,.14); }
+    body.home.sk-mint { --paper: #fbfffd; --ink: #24443a; --acc: #10b981; --acc2: #7fe0bd; --wall: linear-gradient(180deg, #c6eedb 0%, #f0fcf6 100%); --rwall: #d7f4e5; --rfloor: #e8d3a9; --rside: #c2ead6; --bg: #f0fcf6; --tx: #24443a; --mut: rgba(36,68,58,.6); --card: rgba(36,68,58,.05); --line: rgba(36,68,58,.14); }
+    body.home.sk-night { --paper: #1b1530; --ink: #f4efff; --acc: #ffd978; --acc2: #a78bfa; --wall: radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent), radial-gradient(1.5px 1.5px at 78% 12%, #fff, transparent), radial-gradient(1px 1px at 34% 60%, #fff, transparent), radial-gradient(1.5px 1.5px at 88% 70%, #fff, transparent), radial-gradient(1px 1px at 55% 30%, #fff, transparent), linear-gradient(180deg, #120d26 0%, #241a4a 100%); --rwall: #2d2358; --rfloor: #3f2f66; --rside: #251d4b; --bg: #120d26; --tx: #f4efff; --mut: rgba(244,239,255,.62); --card: rgba(255,255,255,.06); --line: rgba(255,255,255,.14); }
+    body.home .wrap, body.home .cta { display: none !important; }
+    body.home .mhp a.lk, body.home .mhp .pd, body.home .mhp .gi { color: var(--tx); }
+    .mhp-wrap { position: relative; max-width: 1040px; margin: 0 auto; padding: 22px 12px calc(40px + env(safe-area-inset-bottom)); }
+    .mhp { position: relative; background: var(--paper); color: var(--tx); border-radius: 26px; border: 3px solid var(--acc); box-shadow: 0 0 0 6px color-mix(in srgb, var(--acc) 22%, transparent), 0 30px 60px rgba(0,0,0,.18); padding: 16px; }
+    .mh-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 2px 4px 12px; }
+    .mh-today { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 99px; font: 700 12px 'Montserrat', sans-serif; background: var(--card); border: 1px solid var(--line); } .mh-today b { color: var(--acc); font-weight: 900; } .mh-today i { opacity: .35; font-style: normal; }
+    .mh-title { flex: 1; min-width: 160px; text-align: center; font-size: clamp(16px, 2.6vw, 22px); font-weight: 900; letter-spacing: -.02em; }
+    .mh-title small { display: block; font-size: 11.5px; font-weight: 600; color: var(--mut); letter-spacing: 0; }
+    .mh-bgm { appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--tx); border-radius: 99px; padding: 6px 12px; font: 800 12px 'Noto Sans KR', sans-serif; cursor: pointer; } .mh-bgm.on { background: var(--acc); color: #fff; border-color: var(--acc); }
+    .mh-body { display: grid; grid-template-columns: 270px 1fr; gap: 14px; }
+    .mh-side { display: flex; flex-direction: column; gap: 12px; align-self: start; position: sticky; top: 12px; }
+    .mh-photo { position: relative; border-radius: 18px; overflow: hidden; background: var(--card); border: 1px solid var(--line); aspect-ratio: 4/5; display: grid; place-items: center; }
+    .mh-photo img { width: 100%; height: 100%; object-fit: cover; display: block; } .mh-photo img.ch { object-fit: contain; padding: 14px; }
+    .mh-bubble { position: relative; padding: 10px 14px; border-radius: 16px; background: color-mix(in srgb, var(--acc) 14%, var(--paper)); border: 1px solid color-mix(in srgb, var(--acc) 35%, transparent); font-size: 13px; line-height: 1.5; font-weight: 700; }
+    .mh-bubble small { display: block; font: 800 10.5px 'Montserrat', sans-serif; letter-spacing: .06em; color: var(--acc); margin-bottom: 2px; }
+    .mh-name { font-size: 20px; font-weight: 900; letter-spacing: -.02em; } .mh-name small { display: block; font-size: 12.5px; font-weight: 600; color: var(--mut); margin-top: 2px; }
+    .mh-btns { display: flex; flex-direction: column; gap: 8px; }
+    .mh-btn { appearance: none; display: block; text-align: center; text-decoration: none; padding: 11px 14px; border-radius: 14px; font: 900 14px 'Noto Sans KR', sans-serif; cursor: pointer; border: 1px solid var(--line); background: var(--card); color: var(--tx); }
+    .mh-btn.p { background: var(--acc); color: #fff; border-color: var(--acc); box-shadow: 0 8px 20px color-mix(in srgb, var(--acc) 35%, transparent); }
+    body.home.sk-night .mh-btn.p { color: #1a1205; }
+    .mh-fw { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; } body.home .fw { border-color: var(--acc); color: var(--acc); } body.home .fw.on { background: var(--acc); color: #fff; }
+    body.home .tree { margin: 0; background: color-mix(in srgb, var(--acc2) 18%, var(--paper)); border-color: color-mix(in srgb, var(--acc2) 45%, transparent); }
+    body.home .tree .th b { color: #3c9a52; } body.home .tree .th span, body.home .tree small { color: var(--mut); } body.home .tree small b { color: var(--acc); }
+    .mh-main { min-width: 0; display: flex; flex-direction: column; }
+    .mh-tabs { display: flex; gap: 4px; flex-wrap: wrap; padding: 0 0 12px; }
+    .mh-tab { appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--tx); padding: 9px 16px; border-radius: 14px 14px 4px 4px; font: 800 13.5px 'Noto Sans KR', sans-serif; cursor: pointer; transition: all .15s; }
+    .mh-tab.on { background: var(--acc); color: #fff; border-color: var(--acc); transform: translateY(-2px); } body.home.sk-night .mh-tab.on { color: #1a1205; }
+    .mh-pane { display: none; flex-direction: column; gap: 18px; min-width: 0; } .mh-pane.on { display: flex; animation: mhin .35s ease; } @keyframes mhin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .mh-h { font-size: 15px; font-weight: 900; display: flex; align-items: center; gap: 8px; margin: 0 0 8px; } .mh-h::before { content: '♥'; color: var(--acc); font-size: 13px; }
+    .mh-room { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--rwall); } .mh-room svg { display: block; width: 100%; height: auto; }
+    .mh-room .chr { animation: bob 2.6s ease-in-out infinite; transform-origin: 50% 100%; transform-box: fill-box; } @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .mh-news-today { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+    .mh-nt { padding: 12px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); font-size: 13px; text-decoration: none; color: var(--tx); cursor: pointer; text-align: left; font-family: inherit; appearance: none; } .mh-nt b { display: block; font-size: 22px; font-family: 'Montserrat', sans-serif; color: var(--acc); } .mh-nt span { color: var(--mut); font-size: 12px; }
+    body.home .intro { font-size: 15.5px; line-height: 1.85; color: var(--tx); }
+    body.home .item { background: var(--paper); } body.home .item .pr { color: var(--acc); }
+    body.home .nw { position: relative; background: var(--paper); border-left: 4px solid var(--acc); } body.home .nw .d { color: var(--acc); font-weight: 800; }
+    body.home .rv { background: var(--paper); } body.home .rv::before { content: '♥ 일촌평'; display: block; font-size: 11px; font-weight: 800; color: var(--acc); margin-bottom: 4px; } body.home .rv .who { color: var(--tx); }
+    body.home .loc { background: var(--paper); } body.home .loc a.map, body.home .mapbtn { color: var(--acc); background: transparent; border: 1px solid var(--acc); }
+    body.home .gal { display: block; columns: 3 150px; column-gap: 8px; } body.home .gal img { width: 100%; aspect-ratio: auto !important; margin-bottom: 8px; border-radius: 14px; grid-column: auto !important; }
+    body.home .gbform { background: var(--paper); } body.home .gbform input, body.home .gbform textarea { background: var(--card); color: var(--tx); border-color: var(--line); } body.home .gbform button { background: var(--acc); color: #fff; }
+    body.home.sk-night .gbform button { color: #1a1205; }
+    body.home .gbi { background: var(--paper); } body.home .gbi .h { color: var(--acc); }
+    body.home .socials a { background: var(--card); border-color: var(--line); color: var(--tx); }
+    .mh-foot { text-align: center; font-size: 12px; color: var(--mut); padding: 16px 8px 0; line-height: 1.7; } .mh-foot a { color: var(--acc); font-weight: 800; text-decoration: none; } .mh-legal { white-space: pre-wrap; font-size: 11.5px; margin-top: 8px; opacity: .85; }
+    body.home .box { background: var(--paper); color: var(--tx); } body.home .box label { color: var(--mut); } body.home .box input, body.home .box textarea { background: var(--card); color: var(--tx); border-color: var(--line); } body.home .box .send { background: var(--acc); color: #fff; } body.home .tchip { color: var(--tx); background: var(--card); border-color: var(--line); } body.home .tchip.on { background: var(--acc); color: #fff; border-color: var(--acc); }
+    @media (max-width: 860px) {
+      .mh-body { grid-template-columns: 1fr; } .mh-side { position: static; }
+      .mh-photo { aspect-ratio: auto; height: 210px; } .mh-photo img:not(.ch) { object-position: 50% 18%; } .mh-news-today { grid-template-columns: repeat(2, 1fr); } .mh-btns { display: grid; grid-template-columns: 1fr 1fr; } .mh-btns .p { grid-column: 1 / -1; } .mh-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; } .mh-tab { white-space: nowrap; flex: none; }
+      .mhp { padding: 12px; border-radius: 20px; } .mh-top { gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .mh-room .chr, .mh-pane.on { animation: none; } }
     [hidden] { display: none !important; }
   </style>
 </head>
 <body>
   <!--DATA-->
+  <div id="room"></div>
   <div class="wrap" id="app">
     <div class="hero" id="hero"><a class="back" id="backCard" href="#">← 명함 보기</a><img id="heroImg" alt="" hidden></div>
     <div class="head"><img class="lg" id="logo" alt="" hidden><div class="lg ini" id="ini" hidden></div><div><h1 id="title"></h1><div class="sub" id="sub"></div></div></div>
@@ -158,14 +215,16 @@
   <script src="/js/tree.js"></script>
   <script>
     const D = window.PAGE_DATA || {}, P = D.page || {};
+    const HOME = D.mode !== 'links';
+    if (HOME) { const sk = ['sky', 'pink', 'mint', 'night'].includes(P.skin) ? P.skin : 'night'; document.body.classList.add('home', 'sk-' + sk); }
     const $ = (id) => document.getElementById(id);
     const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const safe = (u) => /^(https?:\/\/|mailto:|tel:)/i.test(String(u || '')) ? String(u) : '#';
     const lang = (navigator.language || 'ko').slice(0, 2);
     const L = {
-      ko: { gal: '사진', items: '상품 · 가격', news: '소식', loc: '찾아오는 길', rv: '후기', sns: 'SNS · 링크', made: 'TOOMCARD로 만든 미니홈', gb: '방명록', gbName: '이름', gbBody: '한 줄 남기기', gbSend: '남기기', gbSent: '남겼어요! 주인이 확인하면 보여요.', gbRate: '조금 뒤에 다시 남겨 주세요.', gbEmpty: '첫 방명록을 남겨 주세요 ✍️', gbNeed: '이름과 내용을 적어 주세요.', water: '오늘 물 준 사람 <b>{t}</b> · 누적 {n}', meta: '나이테 {r} · 다음 단계까지 {m}', metaMax: '나이테 {r} · 다 자란 큰 오크예요 🌳', forest: '🌳 {w} 숲', fw: '🤝 일촌 맺기', fwOn: '🤝 일촌', fwLogin: '로그인하면 일촌을 맺을 수 있어요.', fwSelf: '내 미니홈이에요 🙂', fwDone: '일촌이 되었어요!', madeLinks: 'TOOMCARD 멀티링크', coupang: '쿠팡 파트너스', coupangDisc: '이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.', mine: '나도 만들기', ask: '문의 · 예약하기', askLink: '연락 남기기', swCard: '🪪 명함', swHome: '🏠 미니홈', swLinks: '🔗 링크 모음', call: '전화', askTitle: '문의 · 예약', askDesc: '남기신 내용은 이 분에게만 전달돼요.', fName: '이름', fPhone: '전화번호', fEmail: '이메일', fWhen: '언제 필요하세요?', tNow: '🔥 지금', tSoon: '1~3개월 안', tBrowse: '그냥 둘러봄', fMemo: '문의 내용', send: '보내기', cancel: '닫기', back: '← 명함 보기', need: '전화번호나 이메일 중 하나는 남겨 주세요.', sent: '전달됐어요! 곧 연락이 갈 거예요.', dup: '이미 접수됐어요.', fail: '잠시 후 다시 시도해 주세요.', map: '지도 열기', hours: '영업시간' },
-      en: { gal: 'Photos', items: 'Products & prices', news: 'News', loc: 'Location', rv: 'Reviews', sns: 'Social & links', made: 'Mini site by TOOMCARD', gb: 'Guestbook', gbName: 'Name', gbBody: 'Leave a line', gbSend: 'Post', gbSent: 'Posted! It shows once the owner approves.', gbRate: 'Please try again in a bit.', gbEmpty: 'Be the first to sign ✍️', gbNeed: 'Please enter a name and a message.', water: 'Watered today by <b>{t}</b> · {n} in all', meta: '{r} ring(s) · {m} to the next stage', metaMax: '{r} ring(s) · fully grown 🌳', forest: '🌳 {w} forest', fw: '🤝 Follow', fwOn: '🤝 Following', fwLogin: 'Sign in to follow.', fwSelf: 'This is your page 🙂', fwDone: 'You are now following!', madeLinks: 'Multilink by TOOMCARD', coupang: 'Coupang Partners', coupangDisc: 'As a Coupang Partners affiliate, this page may earn a commission from qualifying purchases.', mine: 'Make mine', ask: 'Inquire · Book', askLink: 'Leave a message', swCard: '🪪 Card', swHome: '🏠 Mini site', swLinks: '🔗 Links', call: 'Call', askTitle: 'Inquiry · Booking', askDesc: 'Your message goes only to this person.', fName: 'Name', fPhone: 'Phone', fEmail: 'Email', fWhen: 'When do you need it?', tNow: '🔥 Now', tSoon: 'In 1–3 months', tBrowse: 'Just looking', fMemo: 'Message', send: 'Send', cancel: 'Close', back: '← Card', need: 'Leave a phone number or an email.', sent: 'Sent! They will get back to you.', dup: 'Already received.', fail: 'Please try again shortly.', map: 'Open map', hours: 'Hours' },
-      de: { gal: 'Fotos', items: 'Produkte & Preise', news: 'Neuigkeiten', loc: 'Anfahrt', rv: 'Bewertungen', sns: 'Social & Links', made: 'Mini-Seite von TOOMCARD', gb: 'Gästebuch', gbName: 'Name', gbBody: 'Eine Zeile hinterlassen', gbSend: 'Eintragen', gbSent: 'Eingetragen! Sichtbar, sobald freigegeben.', gbRate: 'Bitte gleich noch einmal versuchen.', gbEmpty: 'Trag dich als Erste:r ein ✍️', gbNeed: 'Bitte Name und Nachricht eingeben.', water: 'Heute gegossen von <b>{t}</b> · {n} insgesamt', meta: '{r} Jahresring(e) · noch {m} bis zur nächsten Stufe', metaMax: '{r} Jahresring(e) · ausgewachsen 🌳', forest: '🌳 Wald {w}', fw: '🤝 Folgen', fwOn: '🤝 Gefolgt', fwLogin: 'Zum Folgen bitte anmelden.', fwSelf: 'Das ist deine Seite 🙂', fwDone: 'Du folgst jetzt!', madeLinks: 'Multilink von TOOMCARD', coupang: 'Coupang Partners', coupangDisc: 'Als Coupang-Partners-Affiliate kann diese Seite eine Provision erhalten.', mine: 'Eigene erstellen', ask: 'Anfrage · Buchen', askLink: 'Nachricht hinterlassen', swCard: '🪪 Karte', swHome: '🏠 Mini-Seite', swLinks: '🔗 Links', call: 'Anrufen', askTitle: 'Anfrage · Buchung', askDesc: 'Deine Nachricht geht nur an diese Person.', fName: 'Name', fPhone: 'Telefon', fEmail: 'E-Mail', fWhen: 'Wann brauchst du es?', tNow: '🔥 Jetzt', tSoon: 'In 1–3 Monaten', tBrowse: 'Nur schauen', fMemo: 'Nachricht', send: 'Senden', cancel: 'Schließen', back: '← Karte', need: 'Bitte Telefonnummer oder E-Mail angeben.', sent: 'Gesendet! Du hörst bald von ihnen.', dup: 'Bereits eingegangen.', fail: 'Bitte gleich noch einmal versuchen.', map: 'Karte öffnen', hours: 'Öffnungszeiten' }
+      ko: { gal: '사진', items: '상품 · 가격', news: '소식', loc: '찾아오는 길', rv: '후기', sns: 'SNS · 링크', made: 'TOOMCARD로 만든 미니홈', gb: '방명록', gbName: '이름', gbBody: '한 줄 남기기', gbSend: '남기기', gbSent: '남겼어요! 주인이 확인하면 보여요.', gbRate: '조금 뒤에 다시 남겨 주세요.', gbEmpty: '첫 방명록을 남겨 주세요 ✍️', gbNeed: '이름과 내용을 적어 주세요.', water: '오늘 물 준 사람 <b>{t}</b> · 누적 {n}', meta: '나이테 {r} · 다음 단계까지 {m}', metaMax: '나이테 {r} · 다 자란 큰 오크예요 🌳', forest: '🌳 {w} 숲', fw: '🤝 일촌 맺기', fwOn: '🤝 일촌', fwLogin: '로그인하면 일촌을 맺을 수 있어요.', fwSelf: '내 미니홈이에요 🙂', fwDone: '일촌이 되었어요!', madeLinks: 'TOOMCARD 멀티링크', coupang: '쿠팡 파트너스', coupangDisc: '이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.', mine: '나도 만들기', ask: '문의 · 예약하기', askLink: '연락 남기기', swCard: '🪪 명함', swHome: '🏠 미니홈', swLinks: '🔗 링크 모음', call: '전화', askTitle: '문의 · 예약', askDesc: '남기신 내용은 이 분에게만 전달돼요.', fName: '이름', fPhone: '전화번호', fEmail: '이메일', fWhen: '언제 필요하세요?', tNow: '🔥 지금', tSoon: '1~3개월 안', tBrowse: '그냥 둘러봄', fMemo: '문의 내용', send: '보내기', cancel: '닫기', back: '← 명함 보기', need: '전화번호나 이메일 중 하나는 남겨 주세요.', sent: '전달됐어요! 곧 연락이 갈 거예요.', dup: '이미 접수됐어요.', fail: '잠시 후 다시 시도해 주세요.', map: '지도 열기', hours: '영업시간', tHome: '홈', tDiary: '다이어리', tPhoto: '사진첩', tMenu: '메뉴·상품', tGb: '방명록', mood: 'TODAY IS', moodDef: '오늘도 좋은 하루 ♥', today: 'TODAY', total: 'TOTAL', roomT: '미니룸', newsT: '오늘의 소식', cardBtn: '🪪 명함 보기', linksBtn: '🔗 멀티링크', bgm: '🎵 BGM', legalT: '사업자 정보', introT: '소개', nDiary: '다이어리', nPhoto: '사진', nGb: '일촌평·방명록', nMenu: '메뉴' },
+      en: { gal: 'Photos', items: 'Products & prices', news: 'News', loc: 'Location', rv: 'Reviews', sns: 'Social & links', made: 'Mini site by TOOMCARD', gb: 'Guestbook', gbName: 'Name', gbBody: 'Leave a line', gbSend: 'Post', gbSent: 'Posted! It shows once the owner approves.', gbRate: 'Please try again in a bit.', gbEmpty: 'Be the first to sign ✍️', gbNeed: 'Please enter a name and a message.', water: 'Watered today by <b>{t}</b> · {n} in all', meta: '{r} ring(s) · {m} to the next stage', metaMax: '{r} ring(s) · fully grown 🌳', forest: '🌳 {w} forest', fw: '🤝 Follow', fwOn: '🤝 Following', fwLogin: 'Sign in to follow.', fwSelf: 'This is your page 🙂', fwDone: 'You are now following!', madeLinks: 'Multilink by TOOMCARD', coupang: 'Coupang Partners', coupangDisc: 'As a Coupang Partners affiliate, this page may earn a commission from qualifying purchases.', mine: 'Make mine', ask: 'Inquire · Book', askLink: 'Leave a message', swCard: '🪪 Card', swHome: '🏠 Mini site', swLinks: '🔗 Links', call: 'Call', askTitle: 'Inquiry · Booking', askDesc: 'Your message goes only to this person.', fName: 'Name', fPhone: 'Phone', fEmail: 'Email', fWhen: 'When do you need it?', tNow: '🔥 Now', tSoon: 'In 1–3 months', tBrowse: 'Just looking', fMemo: 'Message', send: 'Send', cancel: 'Close', back: '← Card', need: 'Leave a phone number or an email.', sent: 'Sent! They will get back to you.', dup: 'Already received.', fail: 'Please try again shortly.', map: 'Open map', hours: 'Hours', tHome: 'Home', tDiary: 'Diary', tPhoto: 'Photos', tMenu: 'Menu', tGb: 'Guestbook', mood: 'TODAY IS', moodDef: 'Have a lovely day ♥', today: 'TODAY', total: 'TOTAL', roomT: 'Mini room', newsT: 'What’s new', cardBtn: '🪪 View card', linksBtn: '🔗 Multilink', bgm: '🎵 BGM', legalT: 'Legal notice', introT: 'About', nDiary: 'Diary', nPhoto: 'Photos', nGb: 'Guestbook', nMenu: 'Menu' },
+      de: { gal: 'Fotos', items: 'Produkte & Preise', news: 'Neuigkeiten', loc: 'Anfahrt', rv: 'Bewertungen', sns: 'Social & Links', made: 'Mini-Seite von TOOMCARD', gb: 'Gästebuch', gbName: 'Name', gbBody: 'Eine Zeile hinterlassen', gbSend: 'Eintragen', gbSent: 'Eingetragen! Sichtbar, sobald freigegeben.', gbRate: 'Bitte gleich noch einmal versuchen.', gbEmpty: 'Trag dich als Erste:r ein ✍️', gbNeed: 'Bitte Name und Nachricht eingeben.', water: 'Heute gegossen von <b>{t}</b> · {n} insgesamt', meta: '{r} Jahresring(e) · noch {m} bis zur nächsten Stufe', metaMax: '{r} Jahresring(e) · ausgewachsen 🌳', forest: '🌳 Wald {w}', fw: '🤝 Folgen', fwOn: '🤝 Gefolgt', fwLogin: 'Zum Folgen bitte anmelden.', fwSelf: 'Das ist deine Seite 🙂', fwDone: 'Du folgst jetzt!', madeLinks: 'Multilink von TOOMCARD', coupang: 'Coupang Partners', coupangDisc: 'Als Coupang-Partners-Affiliate kann diese Seite eine Provision erhalten.', mine: 'Eigene erstellen', ask: 'Anfrage · Buchen', askLink: 'Nachricht hinterlassen', swCard: '🪪 Karte', swHome: '🏠 Mini-Seite', swLinks: '🔗 Links', call: 'Anrufen', askTitle: 'Anfrage · Buchung', askDesc: 'Deine Nachricht geht nur an diese Person.', fName: 'Name', fPhone: 'Telefon', fEmail: 'E-Mail', fWhen: 'Wann brauchst du es?', tNow: '🔥 Jetzt', tSoon: 'In 1–3 Monaten', tBrowse: 'Nur schauen', fMemo: 'Nachricht', send: 'Senden', cancel: 'Schließen', back: '← Karte', need: 'Bitte Telefonnummer oder E-Mail angeben.', sent: 'Gesendet! Du hörst bald von ihnen.', dup: 'Bereits eingegangen.', fail: 'Bitte gleich noch einmal versuchen.', map: 'Karte öffnen', hours: 'Öffnungszeiten', tHome: 'Start', tDiary: 'Tagebuch', tPhoto: 'Fotos', tMenu: 'Angebot', tGb: 'Gästebuch', mood: 'HEUTE', moodDef: 'Schönen Tag noch ♥', today: 'HEUTE', total: 'GESAMT', roomT: 'Mini-Zimmer', newsT: 'Neues', cardBtn: '🪪 Karte ansehen', linksBtn: '🔗 Multilink', bgm: '🎵 Musik', legalT: 'Impressum', introT: 'Über mich', nDiary: 'Tagebuch', nPhoto: 'Fotos', nGb: 'Gästebuch', nMenu: 'Angebot' }
     };
     const T = (k) => (L[lang] || L.ko)[k] || L.ko[k] || k;
     document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = T(el.dataset.t); });
@@ -197,10 +256,10 @@
     if (P.intro && has('secIntro')) { $('intro').textContent = P.intro; $('secIntro').hidden = false; }
     // 블록(순서대로): 제목 · 글 · 링크 · 그리드 · 유튜브 (세텁팟 멀티링크 방식)
     const ytId = (u) => { const m = String(u || '').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/); return m ? m[1] : ''; };
-    const blocksHtml = (P.blocks || []).map((b) => {
+    const blockHtml = (b) => {
       if (!b || !b.type) return '';
       if (['link', 'product', 'youtube'].includes(b.type) && !String(b.url || '').trim()) return '';   // 주소 없는 칸은 보여 주지 않는다
-      if (b.type === 'title') return `<div class="blk"><h2 class="ct">${esc(b.text)}</h2></div>`;
+      if (b.type === 'title') return `<div class="blk"><h2 class="ct">${esc(b.text || b.title)}</h2></div>`;
       if (b.type === 'text') return `<div class="blk"><p class="tx">${esc(b.text)}</p></div>`;
       if (b.type === 'product') { const cp = /coupang\.com|coupa\.ng/i.test(b.url || ''); return `<div class="blk"><a class="pd" href="${safe(b.url)}" target="_blank" rel="noopener sponsored">${b.image ? `<img src="${esc(b.image)}" alt="" loading="lazy">` : '<span class="pd-ph">🛒</span>'}<span class="pd-t"><b>${esc(b.title || b.url)}</b>${b.price ? `<em>${esc(/^[0-9][0-9,.]*$/.test(b.price) ? Number(String(b.price).replace(/,/g, '')).toLocaleString() + '원' : b.price)}</em>` : ''}<small>${esc(b.site || '')}${cp ? ' · ' + T('coupang') : ''}</small></span></a>${cp ? `<p class="disc">${T('coupangDisc')}</p>` : ''}</div>`; }
       if (b.type === 'link') return `<div class="blk"><a class="lk" href="${safe(b.url)}" target="_blank" rel="noopener"><span class="ic">${esc(b.icon || '🔗')}</span><span class="tt"><b>${esc(b.title)}</b>${b.desc ? `<small>${esc(b.desc)}</small>` : ''}</span><span class="ar">›</span></a></div>`;
@@ -213,7 +272,8 @@
       if (b.type === 'news') return (b.list || []).length ? `<div class="blk"><h2 class="ct">${T('news')}</h2><div class="news">${(b.list || []).slice(0, 10).map((n) => `<div class="nw"><div class="d">${esc(n.date || '')}</div><b>${esc(n.title || '')}</b><p>${esc(n.text || '')}</p></div>`).join('')}</div></div>` : '';
       if (b.type === 'youtube') { const id = ytId(b.url); return id ? `<div class="blk">${b.title ? `<h2 class="ct">${esc(b.title)}</h2>` : ''}<div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>` : ''; }
       return '';
-    }).join('');
+    };
+    const blocksHtml = (P.blocks || []).map(blockHtml).join('');
     $('blocks').innerHTML = blocksHtml;
     if (P.gallery && P.gallery.length && has('secGal')) { $('gal').innerHTML = P.gallery.map((u) => `<img src="${esc(u)}" alt="" loading="lazy">`).join(''); $('secGal').hidden = false; }
     if (P.items && P.items.length && has('secItems')) { $('items').innerHTML = P.items.map((it) => `<div class="item"><div class="nm">${esc(it.name)}${it.note ? `<small>${esc(it.note)}</small>` : ''}</div><div class="pr">${esc(it.price)}</div></div>`).join(''); $('secItems').hidden = false; }
@@ -227,6 +287,7 @@
     if (sns.length) { $('sns').innerHTML = sns.join(''); $('secSns').hidden = false; }
     if (D.mode === 'links') $('askBtn').textContent = T('askLink');
     if (D.phone) { $('callBtn').href = 'tel:' + String(D.phone).replace(/[^\d+]/g, ''); $('callBtn').hidden = false; }
+    if (HOME) buildRoom();
     document.querySelectorAll('.gal img').forEach((im) => im.addEventListener('click', () => { $('lbImg').src = im.src; $('lb').classList.add('on'); }));
     $('lb').addEventListener('click', () => $('lb').classList.remove('on'));
     const toast = (m) => { const t = $('toast'); t.textContent = m; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 2200); };
@@ -266,6 +327,7 @@
         ]);
         const t = tt.data || {}, p = ps.data || {};
         fwCount = Number((fi.data && fi.data.count) || 0);
+        if ($('todayN')) { $('todayN').textContent = Number(t.today || 0).toLocaleString(); $('totalN').textContent = Number(t.total || 0).toLocaleString(); }
         const r = TC_TREE.calc({ visits: t.total, follows: fwCount, guestbook: gb.count || 0, likes: p.likes, since: p.since });
         const lg = L[lang] ? lang : 'ko';
         $('treeSvg').innerHTML = TC_TREE.svg(r.stage);
@@ -303,6 +365,72 @@
       } catch (e) { toast(T('fail')); }
       $('gbSend').disabled = false;
     });
+    /* ── 미니홈: 책 모양 틀 · 미니룸 · 탭 ── */
+    function buildRoom() {
+      const blocks = P.blocks || [], by = (t) => blocks.filter((b) => b && b.type === t);
+      const flat = (arr, key) => [].concat.apply([], arr.map((b) => b[key] || []));
+      const gallery = (P.gallery || []).concat(flat(by('gallery'), 'images')).filter(Boolean).slice(0, 24);
+      const news = (P.news || []).concat(flat(by('news'), 'list')).filter((n) => n && (n.title || n.text));
+      const items = (P.items || []).concat(flat(by('items'), 'list')).filter((i) => i && i.name);
+      const reviews = (P.reviews || []).concat(flat(by('reviews'), 'list')).filter((r) => r && r.text);
+      const loc = by('location')[0] || {}, address = P.address || loc.address || '', hours = P.hours || loc.hours || '', mapUrl = P.mapUrl || loc.mapUrl || '';
+      const products = by('product'), legal = by('legal').map((b) => b.text).filter(Boolean).join('\n\n');
+      const homeBlocks = blocks.filter((b) => b && ['text', 'title', 'link', 'youtube', 'grid'].includes(b.type));
+      const slugHash = Array.from(String(D.slug)).reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+      const DEF = ['bear-01', 'bear-04', 'cat-02', 'cat-05', 'bunny-01', 'bunny-03', 'pals-02', 'bear-07'];
+      const chId = (D.friend && D.friend.id) || DEF[slugHash % DEF.length], chSrc = '/assets/stickers/' + chId + '.png';
+      const title = P.title || D.company || D.name, subName = [D.name !== title ? D.name : '', D.role].filter(Boolean).join(' · ');
+      const night = document.body.classList.contains('sk-night');
+      const room = '<svg viewBox="0 0 640 360" role="img" aria-label="' + esc(T('roomT')) + '"><rect width="640" height="360" fill="var(--rwall)"/><polygon points="0,0 60,34 60,262 0,262" fill="var(--rside)"/><polygon points="0,262 640,262 640,360 0,360" fill="var(--rfloor)"/><rect y="258" width="640" height="8" fill="var(--rside)"/>'
+        + '<g><rect x="96" y="52" width="150" height="124" rx="8" fill="' + (night ? '#2a2670' : '#a9dcff') + '" stroke="var(--acc)" stroke-width="6"/>' + (night ? '<circle cx="128" cy="82" r="2" fill="#fff"/><circle cx="214" cy="100" r="1.6" fill="#fff"/><circle cx="170" cy="72" r="2.2" fill="#ffd978"/>' : '<ellipse cx="140" cy="88" rx="26" ry="9" fill="#fff" opacity=".85"/><ellipse cx="204" cy="110" rx="20" ry="7" fill="#fff" opacity=".7"/>') + '<rect x="166" y="130" width="10" height="46" fill="#9b6b43"/><circle cx="171" cy="118" r="26" fill="#58b368"/><circle cx="151" cy="130" r="16" fill="#6cc47b"/><circle cx="192" cy="130" r="17" fill="#4ea15d"/><line x1="171" y1="52" x2="171" y2="176" stroke="var(--acc)" stroke-width="4"/><line x1="96" y1="114" x2="246" y2="114" stroke="var(--acc)" stroke-width="4"/></g>'
+        + '<g><rect x="296" y="56" width="92" height="118" rx="6" fill="var(--paper)" stroke="var(--acc)" stroke-width="5"/><path d="M342 138 C316 118 318 92 334 92 C340 92 342 98 342 100 C342 98 344 92 350 92 C366 92 368 118 342 138Z" fill="var(--acc)"/><rect x="310" y="150" width="64" height="5" rx="2" fill="var(--acc2)"/></g>'
+        + '<g><rect x="430" y="150" width="140" height="8" rx="3" fill="#9b6b43"/><rect x="442" y="118" width="22" height="32" rx="3" fill="var(--acc)"/><rect x="470" y="128" width="18" height="22" rx="3" fill="var(--acc2)"/><circle cx="520" cy="136" r="14" fill="#ffd978"/><rect x="548" y="124" width="14" height="26" rx="3" fill="#ff8aa8"/></g>'
+        + '<ellipse cx="320" cy="316" rx="210" ry="30" fill="var(--acc)" opacity=".22"/><ellipse cx="320" cy="322" rx="62" ry="11" fill="#000" opacity=".16"/>'
+        + '<g><rect x="560" y="262" width="34" height="32" rx="6" fill="#d9825b"/><path d="M577 262 C560 240 566 222 577 214 C588 222 594 240 577 262Z" fill="#58b368"/><path d="M577 262 C592 248 606 250 612 238 C602 234 586 240 577 262Z" fill="#6cc47b"/></g>'
+        + '<image class="chr" href="' + chSrc + '" x="238" y="168" width="164" height="156" preserveAspectRatio="xMidYMax meet"/></svg>';
+      const tabs = [['home', T('tHome'), true]];
+      if (news.length) tabs.push(['diary', T('tDiary') + ' ' + news.length, true]);
+      if (gallery.length) tabs.push(['photo', T('tPhoto') + ' ' + gallery.length, true]);
+      if (items.length || products.length) tabs.push(['menu', T('tMenu'), true]);
+      tabs.push(['gb', T('tGb'), true]);
+      const asHtml = (arr) => arr.map(blockHtml).join('');
+      const intro = P.intro ? '<div class="intro">' + esc(P.intro) + '</div>' : '';
+      const newsHtml = news.map((n) => '<div class="nw"><div class="d">' + esc(n.date || '') + '</div><b>' + esc(n.title || '') + '</b><p>' + esc(n.text || '') + '</p></div>').join('');
+      const itemsHtml = items.map((it) => '<div class="item"><div class="nm">' + esc(it.name) + (it.note ? '<small>' + esc(it.note) + '</small>' : '') + '</div><div class="pr">' + esc(it.price || '') + '</div></div>').join('');
+      const locHtml = (address || hours || mapUrl) ? '<div><div class="mh-h">' + T('loc') + '</div><div class="loc">' + (address ? '<div class="row"><span>📍</span><span>' + esc(address) + '</span></div>' : '') + (hours ? '<div class="row"><span>🕒</span><span>' + esc(hours) + '</span></div>' : '') + (/^https:\/\//.test(mapUrl) ? '<a class="map" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + T('map') + ' →</a>' : '') + '</div></div>' : '';
+      const nt = [];
+      if (news.length) nt.push(['diary', news.length, T('nDiary')]); if (gallery.length) nt.push(['photo', gallery.length, T('nPhoto')]); if (items.length) nt.push(['menu', items.length, T('nMenu')]);
+      nt.push(['gb', reviews.length, T('nGb')]);
+      const sns = (D.socials || []).map((s) => '<a href="' + safe(s.url) + '" target="_blank" rel="noopener">' + esc(s.label || s.type) + '</a>').concat(D.website ? ['<a href="' + safe(D.website) + '" target="_blank" rel="noopener">🌐 Website</a>'] : []).join('');
+      const photoBox = D.friend && D.friend.id ? '<div class="mh-photo" style="background:' + (/^#[0-9a-f]{3,8}$/i.test((D.friend.color || '')) ? D.friend.color : 'var(--card)') + '"><img class="ch" src="' + chSrc + '" alt=""></div>' : (D.front ? '<div class="mh-photo"><img src="' + esc(D.front) + '" alt=""></div>' : '<div class="mh-photo"><img class="ch" src="' + chSrc + '" alt=""></div>');
+      $('room').innerHTML = '<div class="mhp-wrap"><div class="mhp">'
+        + '<div class="mh-top"><span class="mh-today">' + T('today') + ' <b id="todayN">–</b> <i>|</i> ' + T('total') + ' <b id="totalN">–</b></span><div class="mh-title">' + esc(title) + (subName ? '<small>' + esc(subName) + '</small>' : '') + '</div>' + (ytIdOf(P.bgm) ? '<button type="button" class="mh-bgm" id="bgmBtn">' + T('bgm') + '</button>' : '') + '</div>'
+        + '<div class="mh-body"><aside class="mh-side">' + photoBox
+        + '<div class="mh-bubble"><small>' + T('mood') + '</small>' + esc(P.mood || T('moodDef')) + '</div>'
+        + '<div class="mh-name">' + esc(D.name) + (D.role ? '<small>' + esc(D.role) + '</small>' : '') + '</div>'
+        + '<div class="tree" id="tree" hidden><div class="tv" id="treeSvg"></div><div class="ti"><div class="th"><b id="treeH">1.0m</b><span id="treeStage"></span></div><small id="treeWater"></small><small id="treeMeta"></small><div class="tb"><button type="button" class="fw" id="fwBtn" hidden></button><a class="fw" id="forestLink" hidden></a></div></div></div>'
+        + '<div class="mh-btns"><button type="button" class="mh-btn p" id="mhAsk">' + T('ask') + '</button>' + (D.phone ? '<a class="mh-btn" href="tel:' + esc(String(D.phone).replace(/[^\d+]/g, '')) + '">' + T('call') + '</a>' : '') + (D.hasCard !== false ? '<a class="mh-btn" href="' + cardUrl + '">' + T('cardBtn') + '</a>' : '') + (D.hasLinks ? '<a class="mh-btn" href="' + cardUrl + '/links">' + T('linksBtn') + '</a>' : '') + '</div>'
+        + (sns ? '<div class="socials">' + sns + '</div>' : '') + '</aside>'
+        + '<main class="mh-main"><div class="mh-tabs" role="tablist">' + tabs.map(([k, l], i) => '<button type="button" class="mh-tab' + (i ? '' : ' on') + '" data-tab="' + k + '">' + esc(l) + '</button>').join('') + '</div>'
+        + '<section class="mh-pane on" data-pane="home"><div><div class="mh-h">' + T('roomT') + '</div><div class="mh-room">' + room + '</div></div>'
+        + '<div class="mh-news-today">' + nt.map(([k, n, l]) => '<button type="button" class="mh-nt" data-go="' + k + '"><b>' + n + '</b><span>' + esc(l) + '</span></button>').join('') + '</div>'
+        + (intro ? '<div><div class="mh-h">' + T('introT') + '</div>' + intro + '</div>' : '') + asHtml(homeBlocks) + locHtml + '</section>'
+        + (news.length ? '<section class="mh-pane" data-pane="diary"><div class="mh-h">' + T('tDiary') + '</div><div class="news">' + newsHtml + '</div></section>' : '')
+        + (gallery.length ? '<section class="mh-pane" data-pane="photo"><div class="mh-h">' + T('tPhoto') + '</div><div class="gal">' + gallery.map((u) => '<img src="' + esc(u) + '" alt="" loading="lazy">').join('') + '</div></section>' : '')
+        + ((items.length || products.length) ? '<section class="mh-pane" data-pane="menu"><div class="mh-h">' + T('tMenu') + '</div>' + (items.length ? '<div class="items">' + itemsHtml + '</div>' : '') + asHtml(products) + '</section>' : '')
+        + '<section class="mh-pane" data-pane="gb"><div class="mh-h">' + T('tGb') + '</div>' + reviews.map((r) => '<div class="rv"><div class="who">' + esc(r.name || '') + '</div><p>' + esc(r.text || '') + '</p></div>').join('')
+        + '<div class="gbform"><input id="gbName" maxlength="20" placeholder="' + T('gbName') + '"><textarea id="gbBody" rows="2" maxlength="300" placeholder="' + T('gbBody') + '"></textarea><button type="button" id="gbSend">' + T('gbSend') + '</button></div><div id="gbList"></div></section>'
+        + '</main></div>'
+        + '<div class="mh-foot"><span>' + T('made') + '</span> · <a href="/maker">' + T('mine') + '</a>' + (legal ? '<div class="mh-legal"><b>' + T('legalT') + '</b>\n' + esc(legal) + '</div>' : '') + '</div>'
+        + '</div></div>';
+      document.querySelector('.wrap').remove();
+      const show = (k) => { document.querySelectorAll('.mh-tab').forEach((b) => b.classList.toggle('on', b.dataset.tab === k)); document.querySelectorAll('.mh-pane').forEach((p) => p.classList.toggle('on', p.dataset.pane === k)); };
+      $('room').addEventListener('click', (e) => { const t = e.target.closest('.mh-tab,[data-go]'); if (t) { show(t.dataset.tab || t.dataset.go); const m = document.querySelector('.mh-tabs'); if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+      $('mhAsk').addEventListener('click', () => $('ov').classList.add('on'));
+      const bid = ytIdOf(P.bgm);
+      if (bid && $('bgmBtn')) $('bgmBtn').addEventListener('click', () => { const on = $('bgmBtn').classList.toggle('on'); let f = $('bgmFrame'); if (on && !f) { f = document.createElement('iframe'); f.id = 'bgmFrame'; f.allow = 'autoplay'; f.style.cssText = 'position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;left:-9px;bottom:0'; f.src = 'https://www.youtube-nocookie.com/embed/' + bid + '?autoplay=1&loop=1&playlist=' + bid; document.body.appendChild(f); } else if (!on && f) f.remove(); });
+    }
+    function ytIdOf(u) { const m = String(u || '').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{6,})/); return m ? m[1] : ''; }
     $('sendBtn').addEventListener('click', async () => {
       const name = $('fName').value.trim(), phone = $('fPhone').value.trim(), email = $('fEmail').value.trim(), memo = $('fMemo').value.trim();
       const okP = phone.replace(/\D/g, '').length >= 8, okE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

@@ -51,7 +51,8 @@ module.exports = async (req, res) => {
     website: card.primaryAction && card.primaryAction.url && card.primaryAction.url !== '#' ? card.primaryAction.url : '',
     phone: starOn ? '' : (card.phone || ''), star: !!starOn,
     page: { title: page.title || '', intro: page.intro || '', gallery: (page.gallery || []).slice(0, 12), items: (page.items || []).slice(0, 20),
-            address: page.address || '', mapUrl: page.mapUrl || '', hours: page.hours || '', reviews: (page.reviews || []).slice(0, 10), news: (page.news || []).slice(0, 10), blocks: mode === 'links' ? (ml.blocks || []).slice(0, 20) : (page.blocks || []).slice(0, 20), mlTitle: ml.title || '' }
+            address: page.address || '', mapUrl: page.mapUrl || '', hours: page.hours || '', reviews: (page.reviews || []).slice(0, 10), news: (page.news || []).slice(0, 10), blocks: mode === 'links' ? (ml.blocks || []).slice(0, 20) : (page.blocks || []).slice(0, 20), mlTitle: ml.title || '', skin: ['sky', 'pink', 'mint', 'night'].includes(page.skin) ? page.skin : '', mood: String(page.mood || '').slice(0, 60), bgm: /^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(page.bgm || '') ? page.bgm : '' },
+    friend: card.friend && card.friend.id ? { id: String(card.friend.id).replace(/[^a-z0-9-]/gi, '').slice(0, 20), color: /^#[0-9a-f]{3,8}$/i.test(card.friend.color || '') ? card.friend.color : '' } : null
   };
   const head = (mode === 'links' ? (ml.title || pub.name) : (pub.page.title || pub.company || pub.name));
   const title = head === pub.name ? `${pub.name} - TOOMCARD` : `${head} | ${pub.name} - TOOMCARD`;

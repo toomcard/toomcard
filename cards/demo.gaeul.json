@@ -11,46 +11,129 @@
   "company": "한빛생명 강남지점",
   "companyWatermark": "한빛생명",
   "industry": "insurance",
-  "region": { "sido": "서울", "city": "강남구", "forest": false },
+  "region": {
+    "sido": "서울",
+    "city": "강남구",
+    "forest": false
+  },
   "slogan": "처음 드는 보험, 쉬운 말로 같이 골라요",
   "phone": "010-1234-5678",
   "email": "gaeul@toomcard.com",
-  "moatTags": ["종신·건강", "자녀보험", "보험 리모델링"],
-  "logo": { "src": "", "alt": "" },
-  "emblem": { "on": true, "source": "initials", "text": "", "img": "", "material": "gold", "shape": "tile", "motion": "sweep" },
-  "front": {
-    "bg": { "type": "image", "src": "/assets/sample_profile_film.jpg", "zoom": 1, "x": 50, "y": 30, "brightness": 1, "filter": "none", "blur": 0, "tint": "" },
-    "text": { "layout": "bottom-left", "showLogo": false, "tone": "auto" },
-    "finish": "glass", "qr": "subtle", "frame": "full", "frameTone": "dark", "look": "clean"
+  "moatTags": [
+    "종신·건강",
+    "자녀보험",
+    "보험 리모델링"
+  ],
+  "logo": {
+    "src": "",
+    "alt": ""
   },
-  "primaryAction": { "url": "https://toomcard.com/demo.gaeul/page", "label": "홈페이지", "icon": "globe" },
+  "emblem": {
+    "on": true,
+    "source": "initials",
+    "text": "",
+    "img": "",
+    "material": "gold",
+    "shape": "tile",
+    "motion": "sweep"
+  },
+  "front": {
+    "bg": {
+      "type": "image",
+      "src": "/assets/sample_profile_film.jpg",
+      "zoom": 1,
+      "x": 50,
+      "y": 30,
+      "brightness": 1,
+      "filter": "none",
+      "blur": 0,
+      "tint": ""
+    },
+    "text": {
+      "layout": "bottom-left",
+      "showLogo": false,
+      "tone": "auto"
+    },
+    "finish": "glass",
+    "qr": "subtle",
+    "frame": "full",
+    "frameTone": "dark",
+    "look": "clean"
+  },
+  "primaryAction": {
+    "url": "https://toomcard.com/demo.gaeul/page",
+    "label": "홈페이지",
+    "icon": "globe"
+  },
   "socials": [
-    { "type": "kakao", "url": "https://open.kakao.com/o/toomcard", "label": "KakaoTalk" },
-    { "type": "instagram", "url": "https://instagram.com/toomcard", "label": "Instagram" }
+    {
+      "type": "kakao",
+      "url": "https://open.kakao.com/o/toomcard",
+      "label": "KakaoTalk"
+    },
+    {
+      "type": "instagram",
+      "url": "https://instagram.com/toomcard",
+      "label": "Instagram"
+    }
   ],
   "links": [],
   "backLayout": "default",
-  "star": { "on": false, "tag": "" },
+  "star": {
+    "on": false,
+    "tag": ""
+  },
   "page": {
     "on": true,
     "title": "김가을 보험 상담실",
     "intro": "보험은 어렵게 느껴지죠. 처음 드는 분께는 꼭 필요한 것 두세 가지만, 이미 든 분께는 겹치는 걸 빼고 비는 곳만 채워 드려요.\n\n상담은 무료이고, 가입을 권하지 않는 상담도 많아요. 편하게 문의 남겨 주세요.",
-    "gallery": [],
+    "gallery": [
+      "/assets/sample_profile_film.jpg",
+      "/assets/sample_profile_creator.jpg",
+      "/assets/sample_profile_ceo.jpg",
+      "/assets/sample_profile_tech.jpg"
+    ],
     "items": [
-      { "name": "첫 보험 점검 (30분)", "price": "무료", "desc": "지금 든 보험 한 번에 정리" },
-      { "name": "자녀 보험 설계", "price": "상담 후 안내", "desc": "태아·어린이 보장 비교" },
-      { "name": "보험 리모델링", "price": "무료", "desc": "겹치는 보장 빼고 보험료 줄이기" }
+      {
+        "name": "첫 보험 점검 (30분)",
+        "price": "무료",
+        "desc": "지금 든 보험 한 번에 정리"
+      },
+      {
+        "name": "자녀 보험 설계",
+        "price": "상담 후 안내",
+        "desc": "태아·어린이 보장 비교"
+      },
+      {
+        "name": "보험 리모델링",
+        "price": "무료",
+        "desc": "겹치는 보장 빼고 보험료 줄이기"
+      }
     ],
     "address": "서울 강남구 테헤란로 123, 5층",
     "mapUrl": "https://map.naver.com",
     "hours": "평일 9:00~18:00 · 토요일 예약제",
     "reviews": [
-      { "name": "김○○", "text": "설명이 쉬워서 처음으로 보험이 뭔지 이해했어요." },
-      { "name": "박○○", "text": "겹치는 보장 빼 주셔서 보험료가 3만 원 줄었어요." }
+      {
+        "name": "김○○",
+        "text": "설명이 쉬워서 처음으로 보험이 뭔지 이해했어요."
+      },
+      {
+        "name": "박○○",
+        "text": "겹치는 보장 빼 주셔서 보험료가 3만 원 줄었어요."
+      }
     ],
     "news": [
-      { "date": "2026-10-20", "title": "11월 자녀 보험 상담 주간", "text": "11월 한 달, 자녀 보험 무료 점검을 받고 있어요." }
-    ]
+      {
+        "date": "2026-10-20",
+        "title": "11월 자녀 보험 상담 주간",
+        "text": "11월 한 달, 자녀 보험 무료 점검을 받고 있어요."
+      }
+    ],
+    "skin": "sky",
+    "mood": "오늘도 든든하게, 상담 환영해요 ♥"
   },
-  "ml": { "on": false }
+  "ml": {
+    "on": false
+  }
 }
